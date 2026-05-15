@@ -38,3 +38,24 @@ export interface Phase2Metrics {
   cpuUnderLoadMs: number
   gcUnderLoad: GcStats
 }
+
+export interface Scenario {
+  run: number
+  label: string
+  dataScale: number
+  trafficScale: number
+  totalEntries: string
+  rpsNoDebounce: number
+  rpsDebounced: number
+}
+
+export interface ScenarioBackendResult {
+  phase1: Phase1Metrics
+  phase2NoDebounce: Phase2Metrics
+  phase2Debounced: Phase2Metrics
+}
+
+export interface ScenarioResult {
+  scenario: Scenario
+  backends: ScenarioBackendResult[]
+}

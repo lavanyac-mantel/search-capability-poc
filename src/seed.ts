@@ -3,7 +3,7 @@ import { join } from 'path'
 import { generateEntries } from './data.js'
 import type { Entry } from './types.js'
 
-// 150 topics × 30 actions × 11 entries each ≈ 45,000 base entries
+// 182 topics × 30 actions × 11 entries each ≈ 60,000 base entries
 const TOPICS = [
   'driver licence', 'vehicle registration', 'birth certificate', 'marriage certificate',
   'death certificate', 'passport', 'proof of age card', 'seniors card', 'concession card',
@@ -48,6 +48,10 @@ const TOPICS = [
   'council rates', 'parking permit', 'street trading permit', 'busking permit',
   'filming permit', 'event permit', 'road closure permit', 'skip bin permit',
   'scaffolding permit', 'excavation permit', 'tree removal permit', 'signage permit',
+  'mental health card', 'carer card', 'companion card', 'taxi subsidy scheme',
+  'vehicle defect notice', 'tow truck licence', 'driving instructor accreditation',
+  'mobile food vendor permit', 'outdoor dining permit', 'temporary road closure',
+  'cultural heritage permit', 'marine safety certificate', 'vessel licence', 'survey licence',
 ]
 
 const ACTIONS = [

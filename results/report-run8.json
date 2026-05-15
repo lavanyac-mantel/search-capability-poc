@@ -1,0 +1,119 @@
+{
+  "phase1": [
+    {
+      "backend": "minisearch",
+      "indexBuildTimeMs": 121.12049999999999,
+      "heapMemoryMb": 236.4261245727539,
+      "rssMemoryMb": 345.328125,
+      "cpuIndexLoadMs": 168.6,
+      "cpuWarmupMs": 920.0790000000002,
+      "coldStartLatencyMs": 5.418334000000073,
+      "baselineLatencyMs": 11.036824100000004,
+      "relevanceHitRate": 100,
+      "gcDuringLoad": {
+        "events": 60,
+        "totalPauseMs": 115.92708349227905
+      }
+    },
+    {
+      "backend": "flexsearch",
+      "indexBuildTimeMs": 185.74241700000002,
+      "heapMemoryMb": 96.22491455078125,
+      "rssMemoryMb": 199.625,
+      "cpuIndexLoadMs": 256.50600000000003,
+      "cpuWarmupMs": 68.34900000000005,
+      "coldStartLatencyMs": 1.266457999998238,
+      "baselineLatencyMs": 1.3562107800002559,
+      "relevanceHitRate": 91.66666666666666,
+      "gcDuringLoad": {
+        "events": 28,
+        "totalPauseMs": 18.44262456893921
+      }
+    },
+    {
+      "backend": "orama",
+      "indexBuildTimeMs": 730.568417,
+      "heapMemoryMb": 422.62294006347656,
+      "rssMemoryMb": 533.796875,
+      "cpuIndexLoadMs": 994.385,
+      "cpuWarmupMs": 897.9160000000002,
+      "coldStartLatencyMs": 12.041624999998021,
+      "baselineLatencyMs": 13.80623588000046,
+      "relevanceHitRate": 91.66666666666666,
+      "gcDuringLoad": {
+        "events": 186,
+        "totalPauseMs": 164.63616704940796
+      }
+    },
+    {
+      "backend": "sqlite",
+      "indexBuildTimeMs": 58.092084,
+      "heapMemoryMb": 37.21600341796875,
+      "rssMemoryMb": 129.203125,
+      "cpuIndexLoadMs": 55.986999999999995,
+      "cpuWarmupMs": 32.567999999999984,
+      "coldStartLatencyMs": 2.8965840000018943,
+      "baselineLatencyMs": 0.8266492000035942,
+      "relevanceHitRate": 83.33333333333334,
+      "gcDuringLoad": {
+        "events": 2,
+        "totalPauseMs": 2.773959159851074
+      }
+    }
+  ],
+  "phase2": [
+    {
+      "backend": "minisearch",
+      "p50Ms": 18,
+      "p97_5Ms": 190,
+      "p99Ms": 214,
+      "throughputRps": 100.64,
+      "errorRatePct": 0,
+      "cpuUnderLoadMs": 94932.22099999999,
+      "gcUnderLoad": {
+        "events": 5998,
+        "totalPauseMs": 11361.825068950653
+      }
+    },
+    {
+      "backend": "flexsearch",
+      "p50Ms": 3,
+      "p97_5Ms": 16,
+      "p99Ms": 20,
+      "throughputRps": 1026.49,
+      "errorRatePct": 0,
+      "cpuUnderLoadMs": 61325.332,
+      "gcUnderLoad": {
+        "events": 3341,
+        "totalPauseMs": 3110.9862780570984
+      }
+    },
+    {
+      "backend": "orama",
+      "p50Ms": 36,
+      "p97_5Ms": 209,
+      "p99Ms": 232,
+      "throughputRps": 77.32,
+      "errorRatePct": 0,
+      "cpuUnderLoadMs": 77611.446,
+      "gcUnderLoad": {
+        "events": 5168,
+        "totalPauseMs": 8391.062512397766
+      }
+    },
+    {
+      "backend": "sqlite",
+      "p50Ms": 1,
+      "p97_5Ms": 4,
+      "p99Ms": 5,
+      "throughputRps": 3033.2,
+      "errorRatePct": 0,
+      "cpuUnderLoadMs": 61132.388000000006,
+      "gcUnderLoad": {
+        "events": 482,
+        "totalPauseMs": 335.17390489578247
+      }
+    }
+  ],
+  "generatedAt": "2026-05-14T07:57:03.560Z"
+}

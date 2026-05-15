@@ -47,3 +47,59 @@ describe('formatTable', () => {
     expect(formatTable([p1], [p2])).toContain('minisearch')
   })
 })
+
+import { formatMarkdownTable, writeRealisticReport } from './report.js'
+import type { ScenarioResult } from './types.js'
+import { readFileSync, existsSync } from 'fs'
+import { join } from 'path'
+
+const makeScenarioResult = (): ScenarioResult => ({
+  scenario: {
+    run: 1,
+    label: 'Realistic baseline',
+    dataScale: 1,
+    trafficScale: 1,
+    totalEntries: '60k',
+    rpsNoDebounce: 0.44,
+    rpsDebounced: 0.22,
+  },
+  backends: [{
+    phase1: p1,
+    phase2NoDebounce: p2,
+    phase2Debounced: { ...p2, p50Ms: 3, throughputRps: 0.2 },
+  }],
+})
+
+describe('formatMarkdownTable', () => {
+  it('produces pipe-separated rows with header and divider', () => {
+    const out = formatMarkdownTable(['Metric', 'minisearch'], [['p50 (ms)', '4.0']])
+    expect(out).toContain('| Metric')
+    expect(out).toContain('| minisearch')
+    expect(out).toContain('---')
+    expect(out).toContain('p50 (ms)')
+    expect(out).toContain('4.0')
+  })
+
+  it('pads rows with fewer cells than headers', () => {
+    const out = formatMarkdownTable(['A', 'B', 'C'], [['x']])
+    expect(out).toContain('| x ')
+    // Should have 3 pipe separators in data row (one per column)
+    const dataRow = out.split('\n')[2]
+    expect((dataRow.match(/\|/g) ?? []).length).toBe(4) // 4 pipes for 3 columns
+  })
+})
+
+describe('writeRealisticReport', () => {
+  it('writes results/results_realistic.md containing all scenario headers', () => {
+    writeRealisticReport([makeScenarioResult()])
+    const outPath = join(process.cwd(), 'results', 'results_realistic.md')
+    expect(existsSync(outPath)).toBe(true)
+    const content = readFileSync(outPath, 'utf8')
+    expect(content).toContain('## Run 1')
+    expect(content).toContain('60k')
+    expect(content).toContain('Phase 1')
+    expect(content).toContain('No debounce')
+    expect(content).toContain('Debounced')
+    expect(content).toContain('minisearch')
+  })
+})
