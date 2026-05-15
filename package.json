@@ -5,6 +5,7 @@
   "scripts": {
     "seed": "npx tsx src/seed.ts",
     "evaluate": "node --expose-gc --require tsx/cjs src/coordinator.ts",
+    "load-test": "node --expose-gc --require tsx/cjs src/load-test-scenarios.ts",
     "test": "vitest run",
     "typecheck": "tsc --noEmit"
   },
